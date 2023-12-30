@@ -1,0 +1,36 @@
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Keys {
+  id   Int    @id @default(autoincrement())
+  key  String @unique
+  left Int    @default(10)
+}
+
+model Users {
+  id           Int      @id @default(autoincrement())
+  student_code String   @unique
+  password     String
+  qldt_token   String   @db.Text
+  student_name String
+  Idpc         String   @db.Text
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  plan         Json
+}
+
+model Logs {
+  id           Int      @id @default(autoincrement())
+  student_code String
+  key          String
+  log          String
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+}
