@@ -6,6 +6,7 @@ export default function CountDown(props: Props) {
     const { date } = useDateContext();
 
     React.useEffect(() => {
+        if (!date) return;
         let now = Math.round((date.getTime() - new Date().getTime()) / 1000); // Calculate remaining time in seconds
 
         if (now <= 0) {

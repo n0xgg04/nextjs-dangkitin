@@ -26,7 +26,7 @@ export function ThemeProvider({ children }: ThemeProviderType) {
     React.useLayoutEffect(() => {
         const themeDefault = ((window.localStorage &&
             window.localStorage.getItem("app-theme")) ||
-            "light") as ThemeType;
+            "dark") as ThemeType;
         setTheme(themeDefault);
     }, []);
 
