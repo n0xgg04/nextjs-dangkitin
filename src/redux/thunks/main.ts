@@ -16,7 +16,7 @@ export const fetchRegisteredData = createAsyncThunk(
                 nhom_to: d.to_hoc.nhom_to,
             }));
         } catch (e) {
-            return [];
+            return null;
         }
     },
 );

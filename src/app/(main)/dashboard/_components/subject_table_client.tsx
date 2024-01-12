@@ -64,8 +64,8 @@ export default React.memo(function SubjectTableClient({ plan }: Props) {
 
     return (
         <div>
-            <div className="bg-gray-800 p-4 grid place-items-center rounded-lg mb-5">
-                <span className="text-[0.8rem] text-gray-400 text-center block">
+            <div className="bg-gray-100 dark:bg-gray-800 p-4 grid place-items-center rounded-lg mb-5">
+                <span className="text-[0.8rem] text-gray-600 dark:text-gray-400 text-center block">
                     Bạn chỉ cần nhập thông tin 1 lần và ấn lưu, hệ thống sẽ lưu
                     danh sách môn của bạn lại. Gần sát giờ đăng ký, bạn chỉ cần
                     ấn nút Bắt đầu đăng ký...
@@ -102,6 +102,7 @@ export default React.memo(function SubjectTableClient({ plan }: Props) {
                         ))}
                         <tr className="text-sm">
                             <td>{plan.length + 1}</td>
+                            <td></td>
                             <td>
                                 <input
                                     ref={mamonRef}

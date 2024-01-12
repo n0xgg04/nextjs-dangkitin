@@ -32,8 +32,9 @@ export const mainReducer = createReducer(initialState, (builder) => {
             state.is_loading_registered_data = action.payload;
         })
         .addCase(fetchRegisteredData.fulfilled, (state, action) => {
-            if (action.payload.length === 0) {
+            if (action.payload == null) {
                 state.expired_session = true;
+                return;
             }
             state.registered_data = action.payload;
             state.is_loading_registered_data = false;
