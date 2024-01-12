@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "lta/hooks/redux";
 import { useSession } from "next-auth/react";
 import getListSubject from "lta/actions/req_list";
 import { setExpire } from "lta/redux/actions/main";
+import * as string_decoder from "string_decoder";
 
 type Props = {
     plan: PlanType;
@@ -24,6 +25,12 @@ const initialState: StateType = {
 
 export default React.memo(function SubjectTableClient({ plan }: Props) {
     const [state, formAction] = useFormState(addSubject, initialState);
+    const [mon, setMon] = React.useState<
+        {
+            ten: string;
+            ma: string;
+        }[]
+    >([]);
     const step = useAppSelector((state) => state.main).step;
     const { data, status } = useSession();
     const dispatch = useAppDispatch();
@@ -43,6 +50,8 @@ export default React.memo(function SubjectTableClient({ plan }: Props) {
                     dispatch(setExpire(true));
                 }
             });
+
+        setMon(JSON.parse(localStorage.getItem("tenMon") || "{}"));
     }, []);
 
     const mamonRef = React.useRef<HTMLInputElement>(null);
@@ -67,6 +76,7 @@ export default React.memo(function SubjectTableClient({ plan }: Props) {
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Tên môn</th>
                             <th>Mã môn học</th>
                             <th>Nhóm</th>
                             <th>Tổ</th>
@@ -78,6 +88,9 @@ export default React.memo(function SubjectTableClient({ plan }: Props) {
                         {plan.map((d, i) => (
                             <tr key={"tb" + i}>
                                 <th>{i + 1}</th>
+                                <th>
+                                    {mon.find((e) => e.ma === d.ma_mon)?.ten}
+                                </th>
                                 <th>{d.ma_mon}</th>
                                 <td>{d.nhom}</td>
                                 <td>{d.to}</td>
