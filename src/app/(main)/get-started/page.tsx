@@ -33,7 +33,7 @@ export default React.memo(function Page({ searchParams }: PageProps) {
             <form onSubmit={onSubmitForm}>
                 <div className="card w-96 bg-base-100 shadow-xl">
                     <div className="card-body items-center text-center">
-                        <h2 className="card-title text-gray-600 dark:text-gray-200">
+                        <h2 className="card-title text-gray-800 dark:text-gray-200">
                             Bắt đầu
                         </h2>
                         <p className="text-sm dark:text-gray-400">
