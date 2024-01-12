@@ -91,7 +91,7 @@ export default React.memo(function Page({ searchParams }: PageProps) {
                             </div>
                         </label>
                         <input
-                            type="text"
+                            type="password"
                             ref={keyRef}
                             placeholder="Key"
                             name="key"

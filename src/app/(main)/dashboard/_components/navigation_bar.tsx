@@ -21,7 +21,7 @@ export default function NavigationBar() {
     }, [registeredModal?.current]);
 
     return (
-        <div className="w-full flex justify-center sticky top-3">
+        <div className="w-full flex justify-center sticky md:top-3 p-3 md:p-0">
             <ul className="menu bg-base-200 menu-horizontal rounded-box">
                 <li>
                     <a>

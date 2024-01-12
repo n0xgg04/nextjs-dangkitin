@@ -9,6 +9,9 @@ import ExpiredModal from "lta/app/(main)/dashboard/_components/expired_session_m
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import LoadingScreen from "lta/components/loading-screen";
+import { DateProvider } from "lta/providers/set-date-context";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 type Props = {
     children: React.ReactNode;
@@ -27,10 +30,14 @@ export default function Layout({ children }: Props) {
         status === "authenticated" && (
             <div className="w-screen min-h-screen">
                 <NavigationBar />
-                <CountDown />
-                <ExpiredModal />
-                <RegisteredModal ref={registeredModal} />
-                <Modal />
+                <ToastContainer />
+                <DateProvider>
+                    <CountDown />
+                    <ExpiredModal />
+                    <RegisteredModal ref={registeredModal} />
+                    <Modal />
+                </DateProvider>
+
                 {children}
             </div>
         )

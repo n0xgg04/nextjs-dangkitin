@@ -16,3 +16,11 @@ declare module "next-auth/jwt" {
         user_data: UserPayload;
     }
 }
+
+declare global {
+    namespace NodeJS {
+        interface ProcessEnv {
+            PORT: sting;
+        }
+    }
+}

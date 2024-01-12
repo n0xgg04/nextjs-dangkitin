@@ -24,8 +24,8 @@ type RootLayoutType = {
 
 export default function RootLayout({ children }: RootLayoutType) {
     return (
-        <html lang="vi" data-theme="light">
-            <body className={cn(inter.className, "h-screen")}>
+        <html lang="vi" data-theme="dark">
+            <body className={cn(inter.className, "min-h-screen w-screen")}>
                 <NextAuthSession>{children}</NextAuthSession>
                 <Toaster />
             </body>

@@ -25,3 +25,12 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.modal{
+  z-index: 1 !important;
+}
+
+.rdp-months{
+  display: flex;
+  justify-content: center;
+}

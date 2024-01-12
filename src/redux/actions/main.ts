@@ -8,6 +8,7 @@ export const setLoadingRegisteredData = createAction<boolean>(
     "setLoadingRegisteredData",
 );
 
+export const setExpire = createAction<boolean>("setExpire");
 export const setStep = createAction<number>("setStep");
 
 export const reloadRegisteredData = createAction<Session>(

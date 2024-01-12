@@ -5,6 +5,7 @@ import {
     setLoadingRegisteredData,
     reloadRegisteredData,
     setStep,
+    setExpire,
 } from "../actions/main";
 import { getNewData } from "lta/actions/get-list";
 import { fetchRegisteredData } from "lta/redux/thunks/main";
@@ -39,5 +40,8 @@ export const mainReducer = createReducer(initialState, (builder) => {
         })
         .addCase(setStep, (state, payload) => {
             state.step = payload.payload;
+        })
+        .addCase(setExpire, (state, payload) => {
+            state.expired_session = payload.payload;
         });
 });

@@ -36,7 +36,9 @@ export function ThemeProvider({ children }: ThemeProviderType) {
 
     return (
         <ThemeContext.Provider value={{ theme, setTheme }}>
-            <div data-theme={theme}>{children}</div>
+            <div data-theme={theme} className="w-screen overflow-none">
+                {children}
+            </div>
         </ThemeContext.Provider>
     );
 }

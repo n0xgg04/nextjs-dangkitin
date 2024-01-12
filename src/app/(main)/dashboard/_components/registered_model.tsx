@@ -14,7 +14,6 @@ export default React.forwardRef(function RegisteredModel(
     ref: React.ForwardedRef<ModalAction>,
 ) {
     const modalRef = React.useRef<HTMLDialogElement>(null);
-    const { data, status } = useSession();
     useImperativeHandle(
         ref,
         () => {
