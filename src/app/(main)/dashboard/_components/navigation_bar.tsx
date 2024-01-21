@@ -20,10 +20,14 @@ export default function NavigationBar() {
         registeredModal?.current?.openModal();
     }, [registeredModal?.current]);
 
+    const openGuide = React.useCallback(() => {
+        guideModal?.current?.openModal();
+    }, []);
+
     return (
         <div className="w-full flex justify-center sticky md:top-3 p-3 md:p-0">
             <ul className="menu bg-base-200 menu-horizontal rounded-box">
-                <li onClick={guideModal?.current?.openModal}>
+                <li onClick={openGuide}>
                     <a>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
