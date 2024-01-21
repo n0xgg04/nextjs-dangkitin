@@ -47,11 +47,11 @@ export default React.memo(function SubjectTableClient({ plan }: Props) {
                     );
                     localStorage.setItem("monOk", JSON.stringify(dd));
                 } else {
-                    dispatch(setExpire(true));
+                    setMon([]);
                 }
             });
 
-        setMon(JSON.parse(localStorage.getItem("tenMon") || "{}"));
+        setMon(JSON.parse(localStorage.getItem("tenMon") || "[]"));
     }, []);
 
     const mamonRef = React.useRef<HTMLInputElement>(null);
