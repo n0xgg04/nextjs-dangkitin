@@ -99,7 +99,7 @@ export default function SocketHandler(
                             "send-log",
                             `Đang đăng ký môn ${te} - ${idd?.nhom_to} - ${idd?.to} ${idd?.lop}`,
                         );
-                        await delay(500 + _.random(1500, false));
+                        await delay(500 + _.random(1000, false));
                         const res = await Reg(data, idd?.id_to_hoc!);
                         socket.emit(
                             "send-log",
