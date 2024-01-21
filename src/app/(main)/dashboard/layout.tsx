@@ -12,12 +12,13 @@ import LoadingScreen from "lta/components/loading-screen";
 import { DateProvider } from "lta/providers/set-date-context";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import GuideModel from "lta/app/(main)/dashboard/_components/guide_modal";
 
 type Props = {
     children: React.ReactNode;
 };
 export default function Layout({ children }: Props) {
-    const { registeredModal } = useModalManager();
+    const { registeredModal, guideModal } = useModalManager();
     const { status } = useSession();
     const router = useRouter();
     React.useEffect(() => {
@@ -36,6 +37,7 @@ export default function Layout({ children }: Props) {
                     <ExpiredModal />
                     <RegisteredModal ref={registeredModal} />
                     <Modal />
+                    <GuideModel ref={guideModal} />
                 </DateProvider>
 
                 {children}

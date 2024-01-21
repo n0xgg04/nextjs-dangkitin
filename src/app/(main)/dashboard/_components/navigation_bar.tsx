@@ -12,7 +12,7 @@ import LogoutBtn from "lta/app/(main)/dashboard/_components/logout_btn";
 
 export default function NavigationBar() {
     const { data, status } = useSession();
-    const { registeredModal } = useModalManager();
+    const { registeredModal, guideModal } = useModalManager();
     const dispatch = useAppDispatch();
     const onOpen = React.useCallback(async () => {
         data && dispatch(setLoadingRegisteredData(true));
@@ -23,7 +23,7 @@ export default function NavigationBar() {
     return (
         <div className="w-full flex justify-center sticky md:top-3 p-3 md:p-0">
             <ul className="menu bg-base-200 menu-horizontal rounded-box">
-                <li>
+                <li onClick={guideModal?.current?.openModal}>
                     <a>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

@@ -8,12 +8,18 @@ import prisma from "lta/lib/database";
 import { PlanType } from "lta/types/global";
 import { MonInterface } from "lta/types/monInterface";
 import Reg from "lta/actions/reg";
+import _ from "lodash";
 
 export const config = {
     api: {
         bodyParser: false,
     },
 };
+
+const delay = (ms: number): Promise<boolean> =>
+    new Promise((resolve) => {
+        setTimeout(() => resolve(true), ms);
+    });
 
 interface SocketServer extends HTTPServer {
     io?: IOServer | undefined;
@@ -93,6 +99,7 @@ export default function SocketHandler(
                             "send-log",
                             `Đang đăng ký môn ${te} - ${idd?.nhom_to} - ${idd?.to} ${idd?.lop}`,
                         );
+                        await delay(500 + _.random(1500, false));
                         const res = await Reg(data, idd?.id_to_hoc!);
                         socket.emit(
                             "send-log",

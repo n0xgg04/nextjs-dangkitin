@@ -7,15 +7,21 @@ import { setStep } from "lta/redux/actions/main";
 import { toast } from "react-toastify";
 import initReg from "lta/actions/init_reg";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 export default function MainButtonGroup(props: Props) {
     const dispatch = useAppDispatch();
+    const router = useRouter();
+    const [startTransition, pending] = React.useTransition();
     const step = useAppSelector((state) => state.main).step;
     const handleNextStep = React.useCallback(() => {
         dispatch(setStep(2));
     }, [step, dispatch]);
 
+    const handleBack = React.useCallback(() => {
+        dispatch(setStep(1));
+    }, [step, dispatch]);
     const { data } = useSession();
 
     const handleSave = React.useCallback(() => {
@@ -104,7 +110,7 @@ export default function MainButtonGroup(props: Props) {
             ) : (
                 <>
                     <button
-                        onClick={handleNextStep}
+                        onClick={handleBack}
                         className="btn btn-active btn-sm"
                     >
                         <MdNavigateBefore />

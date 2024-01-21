@@ -35,6 +35,7 @@ export default async function Reg(data: Session, id: string): Promise<Res> {
                 Idpc: data?.user.Idpc,
                 "Content-Type": "application/json",
             },
+            timeout: 120000,
         },
     );
     if (d.data.data["is_thanh_cong"]) {

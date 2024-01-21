@@ -5,15 +5,14 @@ import axios from "lta/lib/axios";
 
 export default async function initReg(data: Session) {
     try {
-        console.log("a");
         const a = await axios.get("/#/dangkymonhoc", {
             headers: {
                 Authorization: "Bearer " + data?.user.token,
                 Idpc: data?.user.Idpc,
             },
-            timeout: 30000 * 2,
+            timeout: 120000,
         });
-        console.log("b");
+        //   console.log("b");
         const b = await axios.post(
             "/api/dkmh/w-checkvaliddangkymonhoc",
             {},
@@ -23,10 +22,10 @@ export default async function initReg(data: Session) {
                     Idpc: data?.user.Idpc,
                     "Content-Type": "text/plain",
                 },
-                timeout: 30000 * 2,
+                timeout: 120000,
             },
         );
-        console.log("c");
+        //   console.log("c");
         const c = await axios.post(
             "/api/sms/w-locketquaduyetsinhvien",
             {
@@ -38,10 +37,10 @@ export default async function initReg(data: Session) {
                     Idpc: data?.user.Idpc,
                     "Content-Type": "application/json",
                 },
-                timeout: 30000 * 2,
+                timeout: 120000,
             },
         );
-        console.log("d");
+        //  console.log("d");
         const d = await axios.post(
             "/api/srm/w-kiemtrasettinghoanthanhdg",
             {
@@ -57,7 +56,7 @@ export default async function initReg(data: Session) {
                 timeout: 30000 * 2,
             },
         );
-        console.log("e");
+        //   console.log("e");
         const e = await axios.post(
             "/api/dkmh/w-locdsdieukienloc",
             {},
