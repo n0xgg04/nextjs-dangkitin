@@ -32,7 +32,7 @@ export default function Page(props: Props) {
                     <Stepper step={stepper} />
                 </div>
                 <div className="mockup-window max-w-full bg-base-300">
-                    <div className="flex max-w-screen min-h min-w-[50vw] justify-center bg-base-200 p-5">
+                    <div className="flex max-w-screen min-h max-h-[80vh] min-w-[50vw] justify-center bg-base-200 p-5">
                         <div className="overflow-x-auto w-full">
                             <Step2 />
                             <RegisterListTable />

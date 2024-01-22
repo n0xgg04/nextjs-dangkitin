@@ -31,6 +31,9 @@ const authOptions: AuthOptions = {
                                 password: user_data.data.password,
                                 grant_type: "password",
                             },
+                            {
+                                timeout: 120000,
+                            },
                         );
                         if (check.status != 200) {
                             console.log("Loi");
