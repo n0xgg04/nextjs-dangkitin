@@ -86,6 +86,10 @@ export default function Step2() {
                     type: "warning",
                 },
             ]);
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth",
+            });
         });
 
         socket.on("run-failed", () => {
@@ -108,10 +112,6 @@ export default function Step2() {
             ]);
             axios.get("/api/socket").then();
             setStatus("error");
-        });
-
-        socket.onAny(() => {
-            scrollToBottom();
         });
 
         return () => {
