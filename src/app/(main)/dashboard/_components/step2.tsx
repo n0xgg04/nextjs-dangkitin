@@ -20,9 +20,10 @@ export default function Step2() {
     React.useEffect(() => {
         if (step_now == 1) return;
         setLog([]);
-        const socket = io(`:${Number(process.env.NEXT_PUBLIC_PORT) + 1}`, {
-            path: "/api/socket",
+        const socket = io('https://socket.dkmhptit.tech',{
+            path: "/",
             addTrailingSlash: false,
+            transports: ['websocket']
         });
 
         socket.on("connect", () => {
@@ -95,7 +96,7 @@ export default function Step2() {
             setLog((pre) => [
                 ...pre,
                 {
-                    message: "Kết nối máy chủ thất bại!",
+                    message: "Kết nối máy chủ thất bại!" + err.toString(),
                     type: "error",
                 },
             ]);

@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {},
+    experimental: {
+	serverActions: {
+ 	   allowedOrigins: ["dkmhptit.tech"]
+	}
+    },
 };
 
 module.exports = nextConfig;
