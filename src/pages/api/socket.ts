@@ -73,6 +73,7 @@ export default function SocketHandler(
                     ten: string;
                 }[],
             ) {
+                let dataCopy: Session = { ...data };
                 const plan = (
                     await prisma.users.findUnique({
                         where: {
@@ -100,10 +101,10 @@ export default function SocketHandler(
                             `Đang đăng ký môn ${te} - ${idd?.nhom_to} - ${idd?.to} ${idd?.lop}`,
                         );
                         await delay(500 + _.random(1000, false));
-                        const res = await Reg(data, idd?.id_to_hoc!);
+                        const res = await Reg(dataCopy, idd?.id_to_hoc!);
                         socket.emit(
                             "send-log",
-                            `[${i}] Đang đăng ký môn ${te} - ${idd?.nhom_to} - ${idd?.to} ${idd?.lop} ${
+                            `[${i}] Đã đăng ký môn ${te} - ${idd?.nhom_to} - ${idd?.to} ${idd?.lop} ${
                                 res.result === "success"
                                     ? ` thành công (${res.date})`
                                     : ` thất bại (${res.message})`

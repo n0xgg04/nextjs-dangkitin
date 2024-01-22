@@ -23,6 +23,7 @@ export default function Step2() {
         const socket = io(`:${Number(process.env.NEXT_PUBLIC_PORT) + 1}`, {
             path: "/api/socket",
             addTrailingSlash: false,
+            transports: [""],
         });
 
         socket.on("connect", () => {
