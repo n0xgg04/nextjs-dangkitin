@@ -14,6 +14,12 @@ export default function Step2() {
     const step_now = useAppSelector((state) => state.main).step;
     const [log, setLog] = React.useState<Logs[]>([]);
     const { data } = useSession();
+    const scrollToBottom = React.useCallback(() => {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth",
+        });
+    }, []);
     const [status, setStatus] = React.useState<
         "pending" | "connected" | "error"
     >("pending");
@@ -102,6 +108,10 @@ export default function Step2() {
             ]);
             axios.get("/api/socket").then();
             setStatus("error");
+        });
+
+        socket.onAny(() => {
+            scrollToBottom();
         });
 
         return () => {
